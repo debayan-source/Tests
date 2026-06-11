@@ -24,3 +24,7 @@ release tag.
 ## Topics
 
 cimba, agent, configuration
+
+## Test notes
+
+Use this repo in place of `your-org/cimba-test-agents` from the PRD when running TC1-TC13.
