@@ -141,6 +141,22 @@ Always present results in tables when comparing 3+ categories. Use bullet points
 
 This table contains a comprehensive customer-level dataset for a telecommunications company. Each row represents a unique customer account with their demographic information, service subscriptions, usage metrics, and financial data. The table is used for customer analytics including churn prediction, revenue forecasting, cross-sell/upsell analysis, and quarterly business reviews. Data is refreshed monthly with the `quarter` field indicating the reporting period.
 
+### telco_customer_demographics
+
+Customer demographic attributes keyed by `customer_id`. Holds age, gender, marital/partner status, dependents, and senior-citizen flags. Joined to `telco_customer_services` on `customer_id` to segment churn, revenue, and adoption metrics by demographic cohort.
+
+### telco_customer_location
+
+Geographic information for each customer keyed by `customer_id` — city, state, latitude/longitude, and the `zip_code` that links to `telco_zip_code_population`. Used for regional analysis of churn, service coverage, and market penetration.
+
+### telco_customer_status
+
+Lifecycle and churn outcome per `customer_id` — churn label, churn reason/category, customer status (Stayed/Churned/Joined), satisfaction score, and Customer Lifetime Value band. This is the authoritative churn-label source for prediction and root-cause analysis; join to `telco_customer_services` on `customer_id`.
+
+### telco_zip_code_population
+
+Reference table keyed by `zip_code` giving the estimated population per ZIP. Joined via `telco_customer_location.zip_code` to normalize customer counts and churn against population density for market-level analysis.
+
 ---
 
 ## Column Descriptions
